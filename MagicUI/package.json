@@ -1,0 +1,11 @@
+{
+  "name": "magicui",
+  "version": "1.0.0",
+  "description": "Wrapper for my_portfolio",
+  "scripts": {
+    "dev": "cd my_portfolio && npm run dev",
+    "build": "cd my_portfolio && npm run build",
+    "start": "cd my_portfolio && npm run start"
+  },
+  "private": true
+}

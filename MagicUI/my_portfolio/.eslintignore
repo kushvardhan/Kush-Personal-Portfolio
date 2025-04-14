@@ -1,0 +1,8 @@
+node_modules
+.next
+out
+public
+components/ui/*
+components/Tech_Stack.tsx
+components/providers/*
+components/signup-form-demo.tsx

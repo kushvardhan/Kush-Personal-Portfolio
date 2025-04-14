@@ -2,5 +2,6 @@
   "version": 2,
   "buildCommand": "cd MagicUI/my_portfolio && npm install && npm run build",
   "outputDirectory": "MagicUI/my_portfolio/.next",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "ignoreCommand": "exit 0"
 }

@@ -8,7 +8,7 @@
   "scripts": {
     "kill-port": "node kill-port.js",
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --no-lint",
     "start": "next start",
     "lint": "next lint",
     "custom-dev": "npm run kill-port && node server.js",

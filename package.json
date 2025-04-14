@@ -1,0 +1,13 @@
+{
+  "name": "kush-personal-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "MagicUI/my_portfolio"
+  ],
+  "scripts": {
+    "dev": "cd MagicUI/my_portfolio && npm run dev",
+    "build": "cd MagicUI/my_portfolio && npm run build",
+    "start": "cd MagicUI/my_portfolio && npm run start"
+  }
+}

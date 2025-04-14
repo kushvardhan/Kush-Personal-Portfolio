@@ -10,6 +10,12 @@ const nextConfig = {
   },
   // Ensure trailing slashes are handled correctly
   trailingSlash: false,
+  // Explicitly set the target
+  experimental: {
+    appDir: true,
+  },
+  // Disable source maps in production
+  productionBrowserSourceMaps: false,
 };
 
 module.exports = nextConfig;

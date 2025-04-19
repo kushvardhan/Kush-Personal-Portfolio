@@ -74,7 +74,7 @@ export default function SignupFormDemo() {
             className="relative group/btn flex items-center justify-center px-4 py-2 rounded-full font-medium bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all w-40 border border-transparent hover:border-white/20"
             type="button"
           >
-            <Link href="mailto:kushvardhan39797@gmail.com" className="flex items-center space-x-2 w-full justify-center">
+            <Link href="mailto:kushvardhan39797@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 w-full justify-center">
               <IconMail className="h-5 w-5" />
               <span>Email Me</span>
             </Link>

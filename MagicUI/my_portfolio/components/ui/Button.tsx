@@ -20,13 +20,32 @@ const Button = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const { theme } = useTheme();
 
-  // Create bubbles on click
+  // Detect iOS for better compatibility
+  const [isIOS, setIsIOS] = useState(false);
+
+  useEffect(() => {
+    // Check if the device is iOS
+    const checkIOS = () => {
+      const isIOSDevice = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
+      setIsIOS(isIOSDevice);
+    };
+
+    checkIOS();
+  }, []);
+
+  // Create bubbles on click and navigate to contact section
   const handleClick = () => {
     if (!buttonRef.current) return;
 
+    // Scroll to contact section
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
     const rect = buttonRef.current.getBoundingClientRect();
-    // Create bubbles in a volcano-like pattern - moderate number for balance
-    const newBubbles = Array.from({ length: 70 }, (_, i) => {
+    // Create bubbles in a volcano-like pattern - increased number for more dramatic effect
+    const newBubbles = Array.from({ length: 100 }, (_, i) => {
       // Get button position to make bubbles originate from it
       const buttonX = rect.left + rect.width / 2;
       const buttonY = rect.top + rect.height / 2;
@@ -38,7 +57,7 @@ const Button = () => {
 
       // Create a pattern that spreads from the button to the portfolio section
       // Horizontal variation based on button position - wider spread for more dramatic effect
-      const horizontalVariation = (Math.random() * 2 - 1) * window.innerWidth * 0.6; // -60% to +60% of screen width
+      const horizontalVariation = (Math.random() * 2 - 1) * window.innerWidth * 0.8; // -80% to +80% of screen width
 
       // Staggered start with clustering for realistic eruption
       const delay = Math.random() < 0.7 ? Math.random() * 200 : Math.random() * 500 + 200;
@@ -47,9 +66,9 @@ const Button = () => {
         id: Date.now() + i + Math.random(), // Ensure unique IDs by adding random component
         x: buttonX + horizontalVariation, // Start from button X position with variation
         y: buttonY, // Start from button Y position
-        size: Math.random() * 20 + 8, // Increased bubble sizes by ~40%
-        speed: Math.random() * 2 + 1 * (travelDistance / 500), // Faster speed for more dramatic effect
-        opacity: Math.random() * 0.8 + 0.2, // Higher opacity for better visibility
+        size: Math.random() * 25 + 10, // Further increased bubble sizes for more visibility
+        speed: Math.random() * 3 + 1.5 * (travelDistance / 500), // Even faster speed for more dramatic effect
+        opacity: Math.random() * 0.9 + 0.3, // Higher opacity for better visibility
         xOffset: horizontalVariation * 0.1, // Very small horizontal drift
         delay,
         active: false
@@ -69,10 +88,10 @@ const Button = () => {
       }, bubble.delay);
     });
 
-    // Remove bubbles after animation completes - longer duration for more visible effect
+    // Remove bubbles after animation completes - even longer duration for more visible effect
     setTimeout(() => {
       setBubbles(prev => prev.filter(bubble => !newBubbles.some(nb => nb.id === bubble.id)));
-    }, 8000);
+    }, 12000);
   };
 
   // Get cached DOM elements and measurements to avoid repeated DOM access
@@ -192,10 +211,10 @@ const Button = () => {
               opacity: bubble.active ? bubble.opacity : 0,
               background: theme === 'dark'
                 ? 'radial-gradient(circle at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5) 70%)'
-                : 'radial-gradient(circle at center, rgba(147,51,234,1) 0%, rgba(147,51,234,0.5) 70%)',
+                : 'radial-gradient(circle at center, rgba(59,130,246,1) 0%, rgba(147,51,234,0.6) 70%)',
               boxShadow: theme === 'dark'
-                ? '0 0 12px rgba(255,255,255,0.9)'
-                : '0 0 12px rgba(147,51,234,0.9)',
+                ? '0 0 15px rgba(255,255,255,0.9), 0 0 5px rgba(59,130,246,0.8)'
+                : '0 0 15px rgba(59,130,246,0.9), 0 0 5px rgba(147,51,234,0.8)',
               transition: 'opacity 0.3s ease-out',
               zIndex: 9999
             }}
@@ -206,7 +225,8 @@ const Button = () => {
       <button
         ref={buttonRef}
         onClick={handleClick}
-        className="bg-slate-800 no-underline group cursor-pointer relative rounded-full p-px text-xs font-semibold leading-6 text-white inline-block overflow-hidden"
+        onTouchStart={isIOS ? handleClick : undefined} // Add touch event for iOS
+        className="bg-slate-800 no-underline group cursor-pointer relative rounded-full p-px text-xs font-semibold leading-6 text-white inline-block overflow-hidden hover:scale-105 transition-transform duration-300"
         style={{
           boxShadow: theme === 'light'
             ? '0 0 15px rgba(30, 64, 175, 0.7), 0 0 30px rgba(30, 64, 175, 0.4), 0 0 45px rgba(30, 64, 175, 0.2)'
@@ -218,8 +238,11 @@ const Button = () => {
           <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         </span>
         <div className="relative flex items-center justify-center z-10 rounded-full bg-zinc-950 py-0.5 px-4 ring-1 ring-white/10">
-          <span>
-            Hi I'm Kush
+          <span className="flex items-center gap-1">
+            Open for freelancing and Job
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
           </span>
         </div>
         <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />

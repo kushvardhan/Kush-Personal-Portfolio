@@ -42,7 +42,7 @@ const Skills: React.FC = () => {
 
   return (
     <section id="skills" className="relative py-16 md:py-24 text-zinc-900 dark:text-white w-full bg-gray-50 dark:bg-zinc-900 transition-colors duration-300">
-      <div className="container mx-auto px-4 max-w-6xl">
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 xl:px-24 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +70,7 @@ const Skills: React.FC = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 mx-auto max-w-5xl px-2 md:px-6 lg:px-10"
         >
           {skills.map((skill, index) => (
             <SkillCard key={index} skill={skill} />
@@ -99,13 +99,15 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
       variants={item}
       whileHover={{ y: -5, scale: 1.03 }}
       className="bg-white dark:bg-gray-800 bg-opacity-90 dark:bg-opacity-50 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-300 relative"
+      title={skill.name}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-700/20 dark:to-purple-700/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       <div className="p-4 md:p-6 flex flex-col items-center justify-center h-full relative z-10">
         <div
           className={`text-4xl md:text-5xl lg:text-6xl ${skill.color} mb-3 md:mb-4 group-hover:scale-125 transition-all duration-300 drop-shadow-lg`}
+          title={skill.name}
         >
-          <Icon />
+          <Icon title={skill.name} />
         </div>
 
         <h3 className="text-sm md:text-base font-medium text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">{skill.name}</h3>

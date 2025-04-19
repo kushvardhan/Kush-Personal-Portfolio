@@ -4,14 +4,14 @@ import { motion } from "framer-motion"
 import { Code, ExternalLink, Eye } from "lucide-react"
 import { useState } from "react"
 import {
-    SiExpress,
-    SiJavascript,
-    SiMongodb,
-    SiNodedotjs,
-    SiReact,
-    SiTailwindcss,
-    SiTypescript,
-    SiVercel
+  SiExpress,
+  SiJavascript,
+  SiMongodb,
+  SiNodedotjs,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel
 } from "react-icons/si"
 
 interface Project {
@@ -46,39 +46,40 @@ export default function Projects() {
     switch (tech) {
       case "Next.js":
         // Return a different icon instead of Next.js
-        return <SiVercel className="text-zinc-900 dark:text-white transition-colors duration-300" />
+        return <SiVercel className="text-zinc-900 dark:text-white transition-colors duration-300" title="Next.js" />
       case "React":
-        return <SiReact className="text-cyan-400" />
+        return <SiReact className="text-cyan-400" title="React" />
       case "Node.js":
-        return <SiNodedotjs className="text-green-500" />
+        return <SiNodedotjs className="text-green-500" title="Node.js" />
       case "Express":
-        return <SiExpress className="text-zinc-900 dark:text-white transition-colors duration-300" />
+        return <SiExpress className="text-zinc-900 dark:text-white transition-colors duration-300" title="Express" />
       case "MongoDB":
-        return <SiMongodb className="text-green-700" />
+        return <SiMongodb className="text-green-700" title="MongoDB" />
       case "Tailwind CSS":
-        return <SiTailwindcss className="text-blue-500" />
+        return <SiTailwindcss className="text-blue-500" title="Tailwind CSS" />
       case "TypeScript":
-        return <SiTypescript className="text-blue-600" />
+        return <SiTypescript className="text-blue-600" title="TypeScript" />
       case "JavaScript":
-        return <SiJavascript className="text-yellow-400" />
+        return <SiJavascript className="text-yellow-400" title="JavaScript" />
       case "Framer Motion":
         return (
           <motion.div
             className="text-purple-500 font-bold text-xs"
             whileHover={{ scale: 1.2 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            title="Framer Motion"
           >
             FM
           </motion.div>
         )
       default:
-        return <SiVercel className="text-zinc-900 dark:text-white transition-colors duration-300" />
+        return <SiVercel className="text-zinc-900 dark:text-white transition-colors duration-300" title={tech} />
     }
   }
 
   return (
     <section id="projects" className="pt-4 pb-20 bg-gray-50 dark:bg-zinc-900 text-zinc-900 dark:text-white w-full transition-colors duration-300">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 max-w-6xl">
         {/* Section Header */}
         <div className="text-center mb-16">
         <motion.div
@@ -108,7 +109,7 @@ export default function Projects() {
 
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mx-auto max-w-5xl px-2 md:px-6 lg:px-10">
           {projects.map((project, index) => (
             <div
               key={index}
@@ -118,7 +119,7 @@ export default function Projects() {
             >
               <div className="bg-white dark:bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800/50 h-full transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20 group-hover:border-blue-300 dark:group-hover:border-blue-500/50">
                 {/* Project Image */}
-                <div className="relative aspect-video overflow-hidden">
+                <div className="relative overflow-hidden lg:h-[180px] xl:h-[200px] 2xl:h-[220px]">
                   <img
                     src={project.imageUrl || "/placeholder.svg"}
                     alt={project.title}
@@ -176,6 +177,7 @@ export default function Projects() {
                       <div
                         key={i}
                         className="flex items-center gap-1 bg-blue-50 dark:bg-gray-800/50 px-2 py-0.5 rounded-md text-xs font-medium text-blue-700 dark:text-gray-300 border border-blue-100 dark:border-transparent"
+                        title={tech}
                       >
                         <span className="text-base">{getTechIcon(tech)}</span>
                         <span>{tech}</span>

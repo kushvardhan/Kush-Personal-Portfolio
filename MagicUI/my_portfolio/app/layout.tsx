@@ -1,6 +1,6 @@
+import { ClientProviders } from "@/components/providers/client-providers";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { ClientProviders } from "@/components/providers/client-providers";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -28,6 +28,8 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <head>
         <link rel="icon" href="k-logo.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-zinc-900 bg-gray-50 transition-colors duration-300`}

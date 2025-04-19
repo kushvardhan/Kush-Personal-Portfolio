@@ -8,7 +8,7 @@ export function TypewriterEffectSmoothDemo() {
     "Back-end Developer"
   ];
   return (
-    <div className="flex flex-col items-center justify-center h-[10rem]  ">
+    <div className="flex flex-col items-center justify-center h-[18rem]">
       <LetterTypewriter
         phrases={phrases}
         typingSpeed={120}
@@ -16,8 +16,10 @@ export function TypewriterEffectSmoothDemo() {
         delayBetweenPhrases={2000}
         className="mb-8"
       />
-      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4 mt-4">
-        <Link href="/KushResume.pdf" download>
+
+
+      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4 mt-8">
+        <Link href="/KushResume.pdf" download target="_blank" rel="noopener noreferrer">
           <button className="w-40 h-10 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-indigo-700 text-white text-sm relative overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50 border border-transparent hover:border-white/20">
             <span className="absolute inset-0 w-0 bg-gradient-to-r from-blue-600 to-blue-800 transition-all duration-300 ease-out group-hover:w-full"></span>
             <span className="relative flex items-center justify-center">

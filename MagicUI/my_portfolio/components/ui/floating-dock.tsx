@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
 import {
-    AnimatePresence,
-    MotionValue,
-    motion,
-    useMotionValue,
-    useSpring,
-    useTransform,
+  AnimatePresence,
+  MotionValue,
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
 } from "framer-motion";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -162,8 +162,14 @@ function IconContainer({
 
   const [hovered, setHovered] = useState(false);
 
+  // Check if it's an external link (starts with http or https)
+  const isExternalLink = href.startsWith('http');
+
   return (
-    <Link href={href}>
+    <Link
+      href={href}
+      {...(isExternalLink ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+
       <motion.div
         ref={ref}
         style={{ width, height }}

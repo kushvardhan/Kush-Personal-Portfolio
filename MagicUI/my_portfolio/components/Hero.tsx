@@ -43,10 +43,13 @@ const Hero = () => {
           <Button/>
         </div>
         <MeteorDemo />
+
+
       </div>
 
       <div className="flex flex-col-reverse md:flex-row justify-center md:gap-6 lg:gap-8 sm:py-4 items-center mt-4 md:mt-0 w-full max-w-7xl mx-auto px-4 lg:px-6">
         {/* Bio section - takes more space on large screens */}
+
         <motion.div
           className="text-center md:text-left md:px-2 w-full md:w-[68%] lg:w-[72%] xl:w-[75%]"
           initial={{ opacity: 0, x: -50 }}
@@ -54,6 +57,7 @@ const Hero = () => {
           transition={smoothTransition}
 
         >
+
           <div className="text-base px-2 sm:px-0 font-normal text-zinc-800 dark:text-white relative overflow-hidden group transition-colors duration-300 w-full max-w-full mx-auto md:pr-4">
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/10 to-transparent w-[200%] h-full"
@@ -78,7 +82,7 @@ const Hero = () => {
                 wordSpacing: '0.05em'
               }}
             >
-              I&apos;m a 22-year-old BSC IT graduate and aspiring full-stack developer skilled in Next.js and the MERN stack. I enjoy building creative, efficient, and beautiful animated websites, and I&apos;m currently learning DevOps to expand my skillls.
+              I&apos;m a BSC IT graduate and aspiring full-stack developer skilled in Next.js and the MERN stack. I enjoy building creative, efficient, and beautiful animated websites, and I&apos;m currently learning DevOps to expand my skillls.
             </motion.p>
           </div>
         </motion.div>
@@ -91,7 +95,7 @@ const Hero = () => {
           style={{ perspective: 1000 }}
         >
           <motion.div
-            className="relative w-40 h-40 md:w-40 md:h-40 lg:w-44 lg:h-44 xl:w-48 xl:h-48"
+            className="relative w-40 h-40 md:w-44 md:h-44 lg:w-52 lg:h-52 xl:w-60 xl:h-60 2xl:w-64 2xl:h-64"
             animate={{ rotateX: 0, rotateY: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             style={{ transformStyle: 'preserve-3d' }}
@@ -119,7 +123,7 @@ const Hero = () => {
             }}
           >
             <img
-              className="rounded-full w-full h-full object-cover border-4 border-blue-500 relative z-10"
+              className="rounded-full w-full h-full object-cover border-2 md:border-3 lg:border-4 border-blue-500 relative z-10"
               src="/PortfolioProfileImage.png"
               alt="Kush Vardhan"
             />
@@ -131,7 +135,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={smoothTransition}
-        className="mt-4 mb-8"
+        className="mt-8 mb-8"
       >
         <TypewriterEffectSmoothDemo/>
       </motion.div>
